@@ -1,8 +1,6 @@
-'use client';
-
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { ThreeBlob } from '../three/three-blob';
+// import { ThreeBlob } from '../three/three-blob';
 
 export default function Hero() {
 	const heroRef = useRef(null);
@@ -30,7 +28,7 @@ export default function Hero() {
 				.from(
 					ctaRef.current,
 					{
-						opacity: 0,
+						opacity: 1,
 						y: 20,
 					},
 					'-=0.6'
@@ -41,7 +39,7 @@ export default function Hero() {
 	}, []);
 
 	return (
-		<section ref={heroRef} className='relative w-full min-h-screen flex items-center justify-center pt-20 overflow-hidden'>
+		<section ref={heroRef} className='w-full min-h-screen flex items-center justify-center pt-20 overflow-hidden'>
 			<div className='absolute inset-0 bg-gradient-to-b from-primary/5 to-accent/5 pointer-events-none' />
 
 			{/* 3D blob background */}
