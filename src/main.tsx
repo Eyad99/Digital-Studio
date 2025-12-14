@@ -6,6 +6,7 @@ import Navigation from './components/layout/navigation';
 import Services from './components/sections/services';
 import Footer from './components/layout/footer';
 import Hero from './components/sections/hero';
+import Portfolio from './components/sections/portfolio';
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')!).render(
 
 			<Hero />
 			<Services />
+			<Portfolio />
 
 			<Footer />
 		</div>
