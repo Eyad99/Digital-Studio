@@ -1,9 +1,9 @@
-'use client';
-
 import { useEffect, useState } from 'react';
+import { useTheme } from '../theme-provider';
 
 export default function Navigation() {
 	const [isScrolled, setIsScrolled] = useState(false);
+	const { setTheme, theme } = useTheme();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -34,9 +34,18 @@ export default function Navigation() {
 						))}
 					</div>
 
-					<button className='px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium hover:shadow-lg smooth-transition'>
-						Get Started
-					</button>
+					<div className='flex items-center gap-4'>
+						<button
+							onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+							className='p-2 rounded-lg hover:bg-muted smooth-transition'
+							aria-label='Toggle dark mode'
+						>
+							{theme === 'dark' ? '☀️' : '🌙'}
+						</button>
+						<button className='px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium hover:shadow-lg smooth-transition'>
+							Get Started
+						</button>
+					</div>
 				</div>
 			</div>
 		</nav>

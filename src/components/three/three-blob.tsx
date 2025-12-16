@@ -1,36 +1,31 @@
-'use client';
-
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
 import type * as THREE from 'three';
 
 function BlobMesh() {
 	const meshRef = useRef<THREE.Mesh>(null);
-	const timeRef = useRef(0);
 
 	useFrame(() => {
-		if (meshRef.current) {
-			meshRef.current.rotation.x += 0.001;
-			meshRef.current.rotation.y += 0.002;
-			timeRef.current += 0.01;
-		}
+		if (!meshRef.current) return;
+		meshRef.current.rotation.x += 0.004;
+		meshRef.current.rotation.y += 0.006;
 	});
 
 	return (
-		<mesh ref={meshRef} scale={2}>
-			<icosahedronGeometry args={[1, 6]} />
-			<meshPhongMaterial color='#7c3aed' emissive='#a855f7' shininess={100} wireframe={false} />
+		<mesh ref={meshRef} scale={2} castShadow receiveShadow>
+			<icosahedronGeometry args={[1, 2]} />
+			<meshStandardMaterial color='#7c3aed' emissive='#a855f7' metalness={0.4} roughness={0.25} />
 		</mesh>
 	);
 }
 
 export function ThreeBlob() {
 	return (
-		<div className='absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 -z-10'>
-			<Canvas camera={{ position: [0, 0, 5], fov: 50 }} dpr={[1, 2]}>
-				<ambientLight intensity={0.8} />
-				<pointLight position={[10, 10, 10]} intensity={1.2} color='#fbbf24' />
-				<pointLight position={[-10, -10, 10]} intensity={0.8} color='#a855f7' />
+		<div className='absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 z-10'>
+			<Canvas shadows camera={{ position: [0, 0, 6], fov: 45 }}>
+				<ambientLight intensity={0.3} />
+				<directionalLight position={[5, 5, 5]} intensity={1.5} castShadow color='#fbbf24' />
+				<directionalLight position={[-5, -5, -5]} intensity={0.5} color='#a855f7' />
 				<BlobMesh />
 			</Canvas>
 		</div>

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-// import { ThreeBlob } from '../three/three-blob';
+import { ThreeBlob } from '../three/three-blob';
 
 export default function Hero() {
 	const heroRef = useRef(null);
@@ -43,7 +43,7 @@ export default function Hero() {
 			<div className='absolute inset-0 bg-gradient-to-b from-primary/5 to-accent/5 pointer-events-none' />
 
 			{/* 3D blob background */}
-			{/* <ThreeBlob /> */}
+			<ThreeBlob />
 
 			<div className='relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl'>
 				<h1 ref={headlineRef} className='text-5xl sm:text-6xl md:text-7xl font-bold mb-6 gradient-text'>

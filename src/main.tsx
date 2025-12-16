@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import { ThreeParticles } from './components/three/three-particles';
+import { ThemeProvider } from './components/theme-provider';
 import Testimonials from './components/sections/testimonials';
 import Navigation from './components/layout/navigation';
 import Portfolio from './components/sections/portfolio';
@@ -13,18 +14,20 @@ import Hero from './components/sections/hero';
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
-		<div className='w-full overflow-x-hidden'>
-			<ThreeParticles />
-			<Navigation />
+		<ThemeProvider defaultTheme='light' storageKey='vite-ui-theme'>
+			<div className='w-full overflow-x-hidden'>
+				<ThreeParticles />
+				<Navigation />
 
-			<Hero />
-			<Services />
-			<Portfolio />
-			<About />
-			<Testimonials />
-			<Contact />
+				<Hero />
+				<Services />
+				<Portfolio />
+				<About />
+				<Testimonials />
+				<Contact />
 
-			<Footer />
-		</div>
+				<Footer />
+			</div>
+		</ThemeProvider>
 	</StrictMode>
 );
